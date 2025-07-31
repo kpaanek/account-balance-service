@@ -1,0 +1,35 @@
+services:
+  app:
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    ports:
+      - "8080:8080"
+    command: ["java", "-jar", "/src/account-balance-service.jar"]
+    healthcheck:
+      test: [ "CMD", "nc", "-zv", "localhost", "8080" ]
+      interval: 1s
+      timeout: 1s
+      start_period: 1s
+      retries: 120
+    networks:
+      - app_network
+  mongodb:
+    image: mongo:7.0.17
+    container_name: mongodb
+    volumes:
+      - mongodb-data:/data/db/
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: account-balance
+    ports:
+      - "27017:27017"
+    networks:
+      - app_network
+volumes:
+  mongodb-data:
+    driver: local
+networks:
+  app_network:
+    driver: bridge

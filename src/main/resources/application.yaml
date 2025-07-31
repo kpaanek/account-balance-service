@@ -1,0 +1,24 @@
+management:
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  health:
+    livenessState:
+      enabled: true
+    readinessState:
+      enabled: true
+
+spring:
+  application:
+    name:
+      account-balance-service
+  data:
+    mongodb:
+      uri: mongodb://root:password@mongodb:27017/account-balance?authSource=admin
