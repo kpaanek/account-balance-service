@@ -1,7 +1,7 @@
 FROM gradle:jdk21-alpine AS builder
 WORKDIR /app
 COPY . .
-RUN ./gradlew --no-daemon clean build
+RUN ./gradlew --no-daemon clean assemble
 
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app

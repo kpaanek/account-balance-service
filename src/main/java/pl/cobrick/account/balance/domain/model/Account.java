@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.mapping.Document;
+import pl.cobrick.account.balance.domain.CurrencyTransferStrategy;
 import pl.cobrick.account.balance.domain.command.CreateAccountCommand;
 import pl.cobrick.account.balance.domain.command.TransferBalanceCommand;
 import pl.cobrick.account.balance.domain.exception.InvalidDomainStateException;

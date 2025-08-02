@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.cobrick.account.balance.domain.model.Balance;
 import pl.cobrick.account.balance.domain.model.Currency;
-import pl.cobrick.account.balance.domain.model.CurrencyTransferStrategy;
 import pl.cobrick.account.balance.domain.ports.ExchangeRateClient;
 
 import java.math.BigDecimal;
@@ -12,7 +11,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class UsdToPlnTransferStrategy implements CurrencyTransferStrategy {
+class UsdToPlnTransferStrategy implements CurrencyTransferStrategy {
 
     private final ExchangeRateClient exchangeRateClient;
 

@@ -6,7 +6,6 @@ import pl.cobrick.account.balance.domain.command.CreateAccountCommand;
 import pl.cobrick.account.balance.domain.command.TransferBalanceCommand;
 import pl.cobrick.account.balance.domain.exception.InvalidDomainStateException;
 import pl.cobrick.account.balance.domain.model.Account;
-import pl.cobrick.account.balance.domain.model.CurrencyTransferStrategy;
 import pl.cobrick.account.balance.domain.ports.AccountRepository;
 
 import java.util.List;
