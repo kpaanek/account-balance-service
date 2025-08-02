@@ -5,12 +5,12 @@ import pl.cobrick.account.balance.domain.UsdToPlnTransferStrategy
 import pl.cobrick.account.balance.domain.command.CreateAccountCommand
 import pl.cobrick.account.balance.domain.command.TransferBalanceCommand
 import pl.cobrick.account.balance.domain.exception.InvalidDomainStateException
-import pl.cobrick.account.balance.domain.ports.ExchangeRateService
+import pl.cobrick.account.balance.domain.ports.ExchangeRateClient
 import spock.lang.Specification
 
 class AccountSpec extends Specification {
 
-    def exchangeRateService = Mock(ExchangeRateService.class)
+    def exchangeRateService = Mock(ExchangeRateClient.class)
     def plnToUsdTransferStrategy = new PlnToUsdTransferStrategy(exchangeRateService)
     def usdToPlnTransferStrategy = new UsdToPlnTransferStrategy(exchangeRateService)
 
@@ -106,8 +106,8 @@ class AccountSpec extends Specification {
         [
                 firstName: { 'Anna' },
                 lastName : { 'Testowa' },
-                usdAmount: { Optional.of(new BigDecimal('200.00')) },
-                plnAmount: { Optional.of(new BigDecimal('300.00')) }
+                usdAmount: { new BigDecimal('200.00') },
+                plnAmount: { new BigDecimal('300.00') }
         ] as CreateAccountCommand
     }
 

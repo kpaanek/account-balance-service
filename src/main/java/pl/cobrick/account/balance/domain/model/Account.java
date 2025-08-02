@@ -9,6 +9,7 @@ import pl.cobrick.account.balance.domain.command.TransferBalanceCommand;
 import pl.cobrick.account.balance.domain.exception.InvalidDomainStateException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Getter
@@ -32,10 +33,10 @@ public class Account {
                 .id(UUID.randomUUID().toString())
                 .firstName(createAccountCommand.firstName())
                 .lastName(createAccountCommand.lastName())
-                .usdBalance(createAccountCommand.usdAmount()
+                .usdBalance(Optional.ofNullable(createAccountCommand.usdAmount())
                         .map(Balance::usdBalanceOf)
                         .orElse(Balance.emptyUsdBalance()))
-                .plnBalance(createAccountCommand.plnAmount()
+                .plnBalance(Optional.ofNullable(createAccountCommand.plnAmount())
                         .map(Balance::plnBalanceOf)
                         .orElse(Balance.emptyPlnBalance()))
                 .build();

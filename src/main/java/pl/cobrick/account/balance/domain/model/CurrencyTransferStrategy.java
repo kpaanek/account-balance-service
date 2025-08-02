@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface CurrencyTransferStrategy {
     boolean supports(Currency source, Currency target);
+
     List<Balance> transfer(List<Balance> balances, BigDecimal amount);
 
     default void validate(Balance source, BigDecimal amount) {
